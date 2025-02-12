@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string         provider
  * @property string         token
  * @property string         refresh_token
- * @property \Carbon\Carbon last_refreshed_at
+ * @property \Carbon\Carbon expires_at
  */
 class UserOAuthToken extends Model
 {
@@ -22,23 +22,23 @@ class UserOAuthToken extends Model
         'provider',
         'token',
         'refresh_token',
-        'last_refreshed_at',
+        'expires_at',
     ];
 
     protected $casts = [
-        'user_id'           => 'integer',
-        'provider'          => 'string',
-        'token'             => 'string',
-        'refresh_token'     => 'string',
-        'last_refreshed_at' => 'datetime',
+        'user_id'       => 'integer',
+        'provider'      => 'string',
+        'token'         => 'string',
+        'refresh_token' => 'string',
+        'expires_at'    => 'datetime',
     ];
 
     public static $rules = [
-        'user_id'           => 'required|integer',
-        'provider'          => 'required|string',
-        'token'             => 'required|string',
-        'refresh_token'     => 'required|string',
-        'last_refreshed_at' => 'nullable|datetime',
+        'user_id'       => 'required|integer',
+        'provider'      => 'required|string',
+        'token'         => 'required|string',
+        'refresh_token' => 'required|string',
+        'expires_at'    => 'nullable|datetime',
     ];
 
     public function user(): BelongsTo
